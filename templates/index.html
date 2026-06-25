@@ -16,12 +16,31 @@
           <div class="cross"></div>
           <span class="logo-text">Medi<span>Alert</span></span>
         </div>
-        <div class="status">
-          <div class="dot"></div>
-          SYSTEM ACTIVE
+        <div style="display: flex; gap: 30px; align-items: center">
+          <div class="status">
+            <div class="dot"></div>
+            SYSTEM ACTIVE
+          </div>
+          <a
+            href="/logout"
+            style="
+              color: #f0f2f4;
+              text-decoration: none;
+              font-size: 12px;
+              cursor: pointer;
+              border: 1px solid #6b7280;
+              padding: 6px 12px;
+              border-radius: 4px;
+            "
+          >
+            Logout
+          </a>
         </div>
       </div>
 
+      {% if error %}
+      <div class="home error">{{ error }}</div>
+      {% endif %}
       <div class="hero">
         <p class="eyebrow">Emergency Intake</p>
         <h1>Report an <span>Emergency</span></h1>
