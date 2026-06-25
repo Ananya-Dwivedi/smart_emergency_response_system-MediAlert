@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediAlert — Emergency Intake</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+<<<<<<< HEAD
+=======
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+>>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div class="logo">
+          <div class="cross"></div>
+          <span class="logo-text">Medi<span>Alert</span></span>
+        </div>
+<<<<<<< HEAD
+        <div class="status">
+          <div class="dot"></div>
+          SYSTEM ACTIVE
+        </div>
+      </div>
+
+=======
+        <div style="display: flex; gap: 30px; align-items: center">
+          <div class="status">
+            <div class="dot"></div>
+            SYSTEM ACTIVE
+          </div>
+          <a
+            href="/logout"
+            style="
+              color: #f0f2f4;
+              text-decoration: none;
+              font-size: 12px;
+              cursor: pointer;
+              border: 1px solid #6b7280;
+              padding: 6px 12px;
+              border-radius: 4px;
+            "
+          >
+            Logout
+          </a>
+        </div>
+      </div>
+
+      {% if error %}
+      <div class="home error">{{ error }}</div>
+      {% endif %}
+
+>>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
+      <div class="hero">
+        <p class="eyebrow">Emergency Intake</p>
+        <h1>Report an <span>Emergency</span></h1>
+        <p class="sub">
+          Fill this form accurately. Our system will find the nearest available
+          hospital and dispatch an ambulance immediately.
+        </p>
+      </div>
+
+      <form action="/predict" method="POST" class="form">
+        <!-- ── SECTION 1: Patient Details ── -->
+        <div class="section-label">Patient Details</div>
+
+        <div class="row">
+          <div class="field">
+            <label for="patient_name">Full name</label>
+            <input
+              type="text"
+              id="patient_name"
+              name="patient_name"
+              placeholder="e.g. Rajiv Sharma"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="age">Age</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="34"
+              min="0"
+              max="120"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="" disabled selected>Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="blood_group">Blood group</label>
+            <select id="blood_group" name="blood_group">
+              <option value="" disabled selected>Unknown / Select</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>O+</option>
+              <option>O-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- contact number — new field -->
+        <div class="row">
+          <div class="field">
+            <label for="contact">Contact number</label>
+            <input
+              type="tel"
+              id="contact"
+              name="contact"
+              placeholder="+91 98765 43210"
+              pattern="[6-9]{1}[0-9]{9}"
+              required
+            />
+<<<<<<< HEAD
+            {% if error %}
+            <span style="color: red"> {{ error }} </span>
+            {% endif %}
+          </div>
+          <div class="field">
+            <label for="city">Your city (Lucknow)</label>
+            <select id="city" name="city" required>
+=======
+          </div>
+          <div class="field">
+            <label for="area">Your city (Lucknow)</label>
+            <select id="area" name="area" required>
+>>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
+              <option value="" disabled selected>Select area</option>
+              <option>Aliganj</option>
+              <option>Gomti Nagar</option>
+              <option>Hazratganj</option>
+              <option>Indira Nagar</option>
+              <option>Charbagh</option>
+              <option>Chowk</option>
+              <option>Aminabad</option>
+              <option>Mahanagar</option>
+              <option>Kanpur Road</option>
+              <option>Faizabad Road</option>
+              <option>Raebareli Road</option>
+              <option>Sitapur Road</option>
+              <option>Alambagh</option>
+              <option>Dubagga</option>
+              <option>Ashiyana</option>
+              <option>Chinhat</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- landmark — new field -->
+        <div class="row single">
+          <div class="field">
+            <label for="landmark">Landmark / Address</label>
+            <input
+              type="text"
+              id="landmark"
+              name="landmark"
+              placeholder="e.g. Near Sahara Mall, Opposite DPS School..."
+            />
+          </div>
+        </div>
+
+        <!-- ── SECTION 2: Emergency Details ── -->
+        <div class="section-label" style="margin-top: 24px">
+          Emergency Details
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="emergency_type">Type of emergency</label>
+            <select id="emergency_type" name="emergency_type">
+              <option value="" disabled selected>Select type</option>
+              <option>Cardiac arrest</option>
+              <option>Road accident</option>
+              <option>Stroke</option>
+              <option>Respiratory distress</option>
+              <option>Heavy bleeding</option>
+              <option>Burns</option>
+              <option>Poisoning</option>
+              <option>Fracture / Trauma</option>
+              <option>Unconscious</option>
+              <option>Animal Bite</option>
+              <option>Hypothermia</option>
+              <option>Heat Stroke</option>
+              <option>Acute Psychosis</option>
+              <option>Panic Attack</option>
+              <option>Labour Pain</option>
+              <option>Pregnancy Complication</option>
+              <option>Head Injury</option>
+              <option>Allergic Reactions</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── SECTION 3: Patient Condition ── -->
+        <div class="section-label" style="margin-top: 24px">
+          Patient Condition
+        </div>
+
+        <!-- consciousness + breathing — new fields -->
+        <div class="row">
+          <div class="field">
+            <label for="consciousness">Consciousness status</label>
+            <select id="consciousness" name="consciousness" required>
+              <option value="" disabled selected>Select status</option>
+              <option value="fully_conscious">Fully conscious</option>
+              <option value="confused">Confused / Disoriented</option>
+              <option value="semi_conscious">Semi-conscious</option>
+              <option value="unconscious">Unconscious</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="breathing">Breathing status</label>
+            <select id="breathing" name="breathing" required>
+              <option value="" disabled selected>Select status</option>
+              <option value="normal">Normal</option>
+              <option value="laboured">Laboured / Difficulty breathing</option>
+              <option value="rapid">Rapid / Shallow</option>
+              <option value="absent">Not breathing</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- bleeding severity — new field -->
+        <div class="row">
+          <div class="field">
+            <label for="bleeding">Bleeding severity</label>
+            <select id="bleeding" name="bleeding">
+              <option value="" disabled selected>Select severity</option>
+              <option value="none">No bleeding</option>
+              <option value="minor">Minor — small cuts</option>
+              <option value="moderate">Moderate — controlled bleeding</option>
+              <option value="severe">Severe — uncontrolled bleeding</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ── SECTION 4: Description ── -->
+        <div class="section-label" style="margin-top: 24px">
+          Additional Info
+        </div>
+
+        <div class="row single">
+          <div class="field">
+            <label for="description">Describe the situation</label>
+            <textarea
+<<<<<<< HEAD
+              optional
+=======
+>>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
+              id="description"
+              name="description"
+              placeholder="What happened? Time of onset, known medical conditions, medications taken..."
+            ></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          REQUEST EMERGENCY ASSISTANCE
+        </button>
+<<<<<<< HEAD
+
+        <!--
+        Flask receives all these fields:
+        patient_name, age, gender, blood_group,
+        contact, area, landmark,
+        emergency_type, urgency,
+        consciousness, breathing, bleeding,
+        traffic, description
+      --></form>
+    </div>
+=======
+      </form>
+    </div>
+    <script>
+      document.querySelector(".form").addEventListener("submit", function () {
+        const btn = document.querySelector(".submit-btn");
+        btn.disabled = true;
+        btn.textContent = "Processing...";
+      });
+    </script>
+>>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
+  </body>
+</html>

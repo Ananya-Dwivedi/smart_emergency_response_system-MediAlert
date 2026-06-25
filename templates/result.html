@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediAlert — Emergency Response</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div class="logo">
+          <div class="cross"></div>
+          <span class="logo-text">Medi<span>Alert</span></span>
+        </div>
+        <div class="status">
+          <div class="dot"></div>
+          RESPONSE DISPATCHED
+        </div>
+        <a
+          href="/logout"
+          style="
+            color: #f0f2f4;
+            text-decoration: none;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #6b7280;
+            padding: 6px 12px;
+            border-radius: 4px;
+          "
+        >
+          Logout
+        </a>
+      </div>
+
+      {% if error %}
+
+      <div class="error-box">
+        <h2>No Hospitals Available</h2>
+        <p>{{ error }}</p>
+        <a href="/" class="back-btn">Try Again</a>
+      </div>
+
+      {% else %}
+
+      <div class="alert-banner">
+        EMERGENCY RESPONSE ACTIVATED — AMBULANCE BEING DISPATCHED
+      </div>
+
+      <div class="result-grid">
+        <!-- Patient card — 2 cols -->
+        <div class="result-card patient-card">
+          <p class="card-label">Patient</p>
+          <h2 class="card-value">{{ patient_name }}</h2>
+          <p class="card-meta">
+            Age: {{ age }} &nbsp;|&nbsp; {{ gender }} &nbsp;|&nbsp; Blood: {{
+            blood_group }}
+          </p>
+          <p class="card-meta" style="margin-top: 6px">📞 {{ contact }}</p>
+          <p class="card-meta" style="margin-top: 4px">📍 {{ landmark }}</p>
+        </div>
+
+        <!-- Priority card — 1 col -->
+        <div class="result-card stat-card priority-card-{{ priority_color }}">
+          <p class="card-label">Priority</p>
+          <div class="priority-badge priority-{{ priority_color }}">
+            {{ priority }}
+          </div>
+          <p class="card-meta" style="margin-top: 10px">{{ priority_msg }}</p>
+        </div>
+
+        <!-- ETA card — 1 col -->
+        <div class="result-card stat-card">
+          <p class="card-label">Estimated Arrival</p>
+          <h2 class="card-value" id="eta-display">
+            {{ predicted_time }} <span>mins</span>
+          </h2>
+          <p class="card-meta">Distance: {{ distance }}km</p>
+        </div>
+
+        <!-- Hospital card — 2 cols -->
+        <div class="result-card hospital-card">
+          <p class="card-label">Assigned Hospital</p>
+          <h2 class="card-value">{{ hospital_name }}</h2>
+          <p class="card-meta">{{ area }}</p>
+          <p class="card-meta" style="margin-top: 6px">
+            🛏 {{ beds }} beds &nbsp;|&nbsp; 🚑 {{ ambulance }} ambulances
+          </p>
+          <p class="card-meta" style="margin-top: 6px">
+            📞 <strong>{{ hosp_contact }}</strong>
+          </p>
+        </div>
+
+        <!-- Patient condition card — full width -->
+        <div class="result-card contact-card">
+          <p class="card-label">Patient Condition Summary</p>
+          <div class="condition-row">
+            <div class="condition-item">
+              <span class="cond-label">Emergency</span>
+              <span class="cond-value">{{ emergency_type }}</span>
+            </div>
+            <div class="condition-item">
+              <span class="cond-label">Consciousness</span>
+              <span class="cond-value">
+                {{ consciousness | replace('_', ' ') | title }}
+              </span>
+            </div>
+            <div class="condition-item">
+              <span class="cond-label">Breathing</span>
+              <span class="cond-value">
+                {{ breathing | replace('_', ' ') | title }}
+              </span>
+            </div>
+            <div class="condition-item">
+              <span class="cond-label">Bleeding</span>
+              <span class="cond-value">{{ bleeding | title }}</span>
+            </div>
+            <div class="condition-item">
+              <span class="cond-label">Urgency Score</span>
+              <span class="cond-value">{{ urgency }} / 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/" class="back-btn">Report Another Emergency</a>
+
+      {% endif %}
+    </div>
+  </body>
+</html>

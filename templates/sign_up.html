@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediAlert — SignUp</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Header -->
+      <div class="header">
+        <div class="logo">
+          <div class="cross"></div>
+          <span class="logo-text">Medi<span>Alert</span></span>
+        </div>
+        <div class="status">
+          <div class="dot"></div>
+          SYSTEM ACTIVE
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="hero">
+        <p class="eyebrow">Create Account</p>
+        <h1>User <span>Registration</span></h1>
+        <p class="sub">
+          Create your account to access the MediAlert Emergency Intake System.
+        </p>
+      </div>
+
+      <div class="login-card">
+        <!-- Login Form -->
+        <form action="/signup" method="POST" class="form">
+          <div class="section-label">Create Account</div>
+
+          <div class="row">
+            <div class="field">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+          </div>
+
+          {% if error %}
+          <div class="home error">{{ error }}</div>
+          {% endif %}
+          <button type="submit" class="submit-btn">SIGN UP</button>
+
+          <p class="signup">
+            Already have account?
+            <a href="/login">Login here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+    <script>
+      document.querySelector(".form").addEventListener("submit", function () {
+        const btn = document.querySelector(".submit-btn");
+        btn.disabled = true;
+        btn.textContent = "Creating account...";
+      });
+    </script>
+  </body>
+</html>
