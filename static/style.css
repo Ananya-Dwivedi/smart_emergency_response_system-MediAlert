@@ -325,8 +325,6 @@ textarea {
   color: var(--muted);
 }
 
-<<<<<<< HEAD
-=======
 /* Priority card backgrounds */
 .priority-card-red {
   background: rgba(232, 40, 26, 0.08);
@@ -341,7 +339,6 @@ textarea {
   border-color: rgba(34, 197, 94, 0.3);
 }
 
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
 /* Priority badges */
 .priority-badge {
   display: inline-block;
@@ -421,8 +418,6 @@ textarea {
     grid-column: span 2;
   }
 }
-<<<<<<< HEAD
-=======
 
 .login-card {
   background: var(--bg2);
@@ -459,4 +454,3 @@ textarea {
 .login .error {
   margin: 15px 0;
 }
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)

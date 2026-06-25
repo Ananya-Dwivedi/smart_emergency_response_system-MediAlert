@@ -8,10 +8,6 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-<<<<<<< HEAD
-=======
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
   </head>
   <body>
     <div class="page">
@@ -20,41 +16,12 @@
           <div class="cross"></div>
           <span class="logo-text">Medi<span>Alert</span></span>
         </div>
-<<<<<<< HEAD
         <div class="status">
           <div class="dot"></div>
           SYSTEM ACTIVE
         </div>
       </div>
 
-=======
-        <div style="display: flex; gap: 30px; align-items: center">
-          <div class="status">
-            <div class="dot"></div>
-            SYSTEM ACTIVE
-          </div>
-          <a
-            href="/logout"
-            style="
-              color: #f0f2f4;
-              text-decoration: none;
-              font-size: 12px;
-              cursor: pointer;
-              border: 1px solid #6b7280;
-              padding: 6px 12px;
-              border-radius: 4px;
-            "
-          >
-            Logout
-          </a>
-        </div>
-      </div>
-
-      {% if error %}
-      <div class="home error">{{ error }}</div>
-      {% endif %}
-
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
       <div class="hero">
         <p class="eyebrow">Emergency Intake</p>
         <h1>Report an <span>Emergency</span></h1>
@@ -131,7 +98,6 @@
               pattern="[6-9]{1}[0-9]{9}"
               required
             />
-<<<<<<< HEAD
             {% if error %}
             <span style="color: red"> {{ error }} </span>
             {% endif %}
@@ -139,12 +105,6 @@
           <div class="field">
             <label for="city">Your city (Lucknow)</label>
             <select id="city" name="city" required>
-=======
-          </div>
-          <div class="field">
-            <label for="area">Your city (Lucknow)</label>
-            <select id="area" name="area" required>
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
               <option value="" disabled selected>Select area</option>
               <option>Aliganj</option>
               <option>Gomti Nagar</option>
@@ -264,10 +224,7 @@
           <div class="field">
             <label for="description">Describe the situation</label>
             <textarea
-<<<<<<< HEAD
               optional
-=======
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
               id="description"
               name="description"
               placeholder="What happened? Time of onset, known medical conditions, medications taken..."
@@ -278,7 +235,6 @@
         <button type="submit" class="submit-btn">
           REQUEST EMERGENCY ASSISTANCE
         </button>
-<<<<<<< HEAD
 
         <!--
         Flask receives all these fields:
@@ -289,16 +245,5 @@
         traffic, description
       --></form>
     </div>
-=======
-      </form>
-    </div>
-    <script>
-      document.querySelector(".form").addEventListener("submit", function () {
-        const btn = document.querySelector(".submit-btn");
-        btn.disabled = true;
-        btn.textContent = "Processing...";
-      });
-    </script>
->>>>>>> fba6a91 (Final deployment ready - all bugs fixed. MediAlert - Ready for deployment)
   </body>
 </html>
